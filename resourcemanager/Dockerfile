@@ -1,6 +1,6 @@
-FROM bde2020/hadoop-base
+FROM nogala/hadoop-base:2.8.5
 
-MAINTAINER Ivan Ermilov <ivan.s.ermilov@gmail.com>
+MAINTAINER Norberto Garcia <nogala@gmail.com>
 
 HEALTHCHECK CMD curl -f http://localhost:8088/ || exit 1
 

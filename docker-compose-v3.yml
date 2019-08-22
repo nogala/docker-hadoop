@@ -2,7 +2,7 @@ version: '3'
 
 services:
   namenode:
-    image: bde2020/hadoop-namenode:2.0.0-hadoop3.1.1-java8
+    image: nogala/hadoop-namenode:2.8.5
     networks:
       - hbase
     volumes:
@@ -18,13 +18,13 @@ services:
         condition: on-failure
       placement:
         constraints:
-          - node.hostname == akswnc4.aksw.uni-leipzig.de
+          - node.hostname == nogala.cic.ipn.mx
       labels:
         traefik.docker.network: hbase
         traefik.port: 50070
 
   datanode:
-    image: bde2020/hadoop-datanode:2.0.0-hadoop3.1.1-java8
+    image: nogala/hadoop-datanode:2.8.5
     networks:
       - hbase
     volumes:
@@ -42,7 +42,7 @@ services:
         traefik.port: 50075
 
   resourcemanager:
-    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.1.1-java8
+    image: nogala/hadoop-resourcemanager:2.8.5
     networks:
       - hbase
     environment:
@@ -56,7 +56,7 @@ services:
         condition: on-failure
       placement:
         constraints:
-          - node.hostname == akswnc4.aksw.uni-leipzig.de
+          - node.hostname == nogala.cic.ipn.mx
       labels:
         traefik.docker.network: hbase
         traefik.port: 8088
@@ -64,7 +64,7 @@ services:
       disable: true
 
   nodemanager:
-    image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.1.1-java8
+    image: nogala/hadoop-nodemanager:2.8.5
     networks:
       - hbase
     environment:
@@ -80,7 +80,7 @@ services:
         traefik.port: 8042
 
   historyserver:
-    image: bde2020/hadoop-historyserver:2.0.0-hadoop3.1.1-java8
+    image: nogala/hadoop-historyserver:2.8.5
     networks:
       - hbase
     volumes:
@@ -94,7 +94,7 @@ services:
       replicas: 1
       placement:
         constraints:
-          - node.hostname == akswnc4.aksw.uni-leipzig.de
+          - node.hostname == nogala.cic.ipn.mx
       labels:
         traefik.docker.network: hbase
         traefik.port: 8188
